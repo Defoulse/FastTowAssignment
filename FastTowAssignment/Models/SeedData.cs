@@ -16,10 +16,79 @@ namespace FastTowAssignment.Controllers
             using (var context = new FastTowAssignmentContext(
              serviceProvider.GetRequiredService<DbContextOptions<FastTowAssignmentContext>>()))
             {
+                cities(context);
                 roles(context);
                 adminUser(context);
                 userRoles(context);
             }
+        }
+
+        public static void cities(FastTowAssignmentContext context)
+        {
+            if (context.Cities.Any())
+            {
+                return;
+            }
+
+            context.Cities.AddRange(
+                new City
+                {
+                    Name = "George Town"
+                },
+                new City
+                {
+                    Name = "Kuala Lumpur"
+                },
+                new City
+                {
+                    Name = "Ipoh"
+                },
+                new City
+                {
+                    Name = "Kuching"
+                },
+                new City
+                {
+                    Name = "Johor Bahru"
+                },
+                new City
+                {
+                    Name = "Kota Kinabalu"
+                },
+                new City
+                {
+                    Name = "Shah Alam"
+                },
+                new City
+                {
+                    Name = "Malacca City"
+                },
+                new City
+                {
+                    Name = "Miri"
+                },
+                new City
+                {
+                    Name = "Petaling Jaya"
+                },
+                new City
+                {
+                    Name = "Kuala Terengganu"
+                },
+                new City
+                {
+                    Name = "Iskandar Puteri"
+                },
+                new City
+                {
+                    Name = "Subang Jaya"
+                },
+                new City
+                {
+                    Name = "Kuantan"
+                }
+            );
+            context.SaveChanges();
         }
 
         public static void adminUser(FastTowAssignmentContext context)
