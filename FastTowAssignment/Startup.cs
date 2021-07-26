@@ -28,6 +28,13 @@ namespace FastTowAssignment
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddAuthorization(options => {
+                options.AddPolicy("readpolicy",
+                    builder => builder.RequireRole("Admin", "Driver", "Client"));
+                options.AddPolicy("writepolicy",
+                    builder => builder.RequireRole("Admin"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

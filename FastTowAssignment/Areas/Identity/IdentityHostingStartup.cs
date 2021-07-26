@@ -20,8 +20,14 @@ namespace FastTowAssignment.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("FastTowAssignmentContextConnection")));
 
-                services.AddDefaultIdentity<FastTowAssignmentUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<FastTowAssignmentContext>();
+                //services.AddDefaultIdentity<FastTowAssignmentUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                //    .AddEntityFrameworkStores<FastTowAssignmentContext>();
+                services.AddIdentity<FastTowAssignmentUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                 .AddDefaultUI()
+                 .AddEntityFrameworkStores<FastTowAssignmentContext>()
+                 .AddDefaultTokenProviders();
+                services.AddControllersWithViews();
+                services.AddRazorPages();
             });
         }
     }
