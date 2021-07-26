@@ -9,5 +9,10 @@ namespace FastTowAssignment.Areas.Identity.Data
     // Add profile data for application users by adding properties to the FastTowAssignmentUser class
     public class FastTowAssignmentUser : IdentityUser
     {
+        [PersonalData]
+        public string Name { get; set; }
+
+        [PersonalData]
+        public string FamilyName { get; set; }
     }
 }

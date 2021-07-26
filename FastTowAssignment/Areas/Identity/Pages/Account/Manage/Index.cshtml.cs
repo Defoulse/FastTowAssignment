@@ -33,6 +33,17 @@ namespace FastTowAssignment.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Name")]
+            public string Name { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Family Name")]
+            public string FamilyName { get; set; }
+
+
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -47,6 +58,8 @@ namespace FastTowAssignment.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
+                Name = user.Name,
+                FamilyName = user.FamilyName,
                 PhoneNumber = phoneNumber
             };
         }
@@ -87,6 +100,16 @@ namespace FastTowAssignment.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+
+            if (Input.Name != user.Name)
+            {
+                user.Name = Input.Name;
+            }
+            if (Input.FamilyName != user.FamilyName)
+            {
+                user.FamilyName = Input.FamilyName;
+            }
+            await _userManager.UpdateAsync(user);
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
