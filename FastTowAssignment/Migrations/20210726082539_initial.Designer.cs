@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastTowAssignment.Migrations
 {
     [DbContext(typeof(FastTowAssignmentContext))]
-    [Migration("20210726081841_initial")]
+    [Migration("20210726082539_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
