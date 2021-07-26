@@ -13,6 +13,7 @@ namespace FastTowAssignment.Data
     public class FastTowAssignmentContext : IdentityDbContext<FastTowAssignmentUser>
     {
         public DbSet<City> Cities { get; set; }
+        public DbSet<Status> Statuses { get; set; }
         public FastTowAssignmentContext(DbContextOptions<FastTowAssignmentContext> options)
             : base(options)
         {
