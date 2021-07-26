@@ -191,6 +191,7 @@ namespace FastTowAssignment.Migrations
                     DepartureCityId = table.Column<long>(nullable: false),
                     DestinationCityId = table.Column<long>(nullable: false),
                     Price = table.Column<int>(nullable: false),
+                    Car = table.Column<string>(nullable: false),
                     CurrentStatusId = table.Column<long>(nullable: false),
                     CreationDate = table.Column<DateTime>(nullable: false)
                 },
@@ -202,7 +203,7 @@ namespace FastTowAssignment.Migrations
                         column: x => x.ClientId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Orders_Statuses_CurrentStatusId",
                         column: x => x.CurrentStatusId,

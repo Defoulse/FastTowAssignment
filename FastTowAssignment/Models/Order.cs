@@ -31,6 +31,8 @@ namespace FastTowAssignment.Models
         [Required]
         public int Price { get; set; }
         [Required]
+        public string Car { get; set; }
+        [Required]
         public long CurrentStatusId { get; set; }
         [ForeignKey("CurrentStatusId")]
         public virtual Status CurrentStatus { get; set; }
