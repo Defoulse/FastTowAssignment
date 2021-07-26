@@ -4,14 +4,16 @@ using FastTowAssignment.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FastTowAssignment.Migrations
 {
     [DbContext(typeof(FastTowAssignmentContext))]
-    partial class FastTowAssignmentContextModelSnapshot : ModelSnapshot
+    [Migration("20210726072435_statuses_model_add")]
+    partial class statuses_model_add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

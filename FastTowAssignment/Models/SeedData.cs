@@ -16,11 +16,27 @@ namespace FastTowAssignment.Controllers
             using (var context = new FastTowAssignmentContext(
              serviceProvider.GetRequiredService<DbContextOptions<FastTowAssignmentContext>>()))
             {
+                statuses(context);
                 cities(context);
                 roles(context);
                 adminUser(context);
                 userRoles(context);
             }
+        }
+
+        public static void statuses(FastTowAssignmentContext context)
+        {
+            if (context.Statuses.Any())
+            {
+                return;
+            }
+
+            context.Statuses.AddRange(
+                new Status { Name = "Order is waiting for the Driver"},
+                new Status { Name = "Order is taken by the Driver"},
+                new Status { Name = "Order is completed"}
+                );
+            context.SaveChanges();
         }
 
         public static void cities(FastTowAssignmentContext context)

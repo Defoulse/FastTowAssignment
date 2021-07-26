@@ -10,6 +10,8 @@
     <Compile Remove="Migrations\20210726055050_cities_model_add.Designer.cs" />
     <Compile Remove="Migrations\20210726070308_statuses_model_add.cs" />
     <Compile Remove="Migrations\20210726070308_statuses_model_add.Designer.cs" />
+    <Compile Remove="Migrations\20210726072321_statuses_model_add.cs" />
+    <Compile Remove="Migrations\20210726072321_statuses_model_add.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
