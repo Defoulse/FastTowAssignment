@@ -49,7 +49,7 @@ namespace FastTowAssignment.Controllers
 
         public static void roles(FastTowAssignmentContext context)
         {
-            if (context.Users.Any())
+            if (context.Roles.Any())
             {
                 return;
             }
@@ -82,7 +82,7 @@ namespace FastTowAssignment.Controllers
 
         public static void userRoles(FastTowAssignmentContext context)
         {
-            if (context.Users.Any())
+            if (context.UserRoles.Any())
             {
                 return;
             }
