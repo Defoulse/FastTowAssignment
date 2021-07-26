@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using FastTowAssignment.Areas.Identity.Data;
 
 namespace FastTowAssignment.Models
 {
@@ -13,12 +14,12 @@ namespace FastTowAssignment.Models
         [Key]
         public long Id { get; set; }
         [Required]
-        public long ClientId { get; set; }
+        public string ClientId { get; set; }
         [ForeignKey("ClientId")]
-        public virtual IdentityUser Client { get; set; }
-        public long DriverId { get; set; }
+        public virtual FastTowAssignmentUser Client { get; set; }
+        public string DriverId { get; set; }
         [ForeignKey("DriverId")]
-        public virtual IdentityUser Driver { get; set; }
+        public virtual FastTowAssignmentUser Driver { get; set; }
         [Required]
         public long DepartureCityId { get; set; }
         [Required]

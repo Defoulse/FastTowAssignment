@@ -14,6 +14,7 @@ namespace FastTowAssignment.Data
     {
         public DbSet<City> Cities { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public FastTowAssignmentContext(DbContextOptions<FastTowAssignmentContext> options)
             : base(options)
         {
