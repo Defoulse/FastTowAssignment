@@ -8,17 +8,20 @@ using System.Threading.Tasks;
 
 namespace FastTowAssignment.Controllers
 {
-    [Authorize(Roles = "Admin, Client")]
     [Authorize(Policy = "readpolicy")]
     public class OrderController : Controller
     {
         // GET: OrderController
+
+        [Authorize(Roles = "Admin, Client")]
         public ActionResult Index()
         {
             return View();
         }
 
         // GET: OrderController/Details/5
+
+        [Authorize(Roles = "Admin, Driver")]
         public ActionResult Details(int id)
         {
             return View();
