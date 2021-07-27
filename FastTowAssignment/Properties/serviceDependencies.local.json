@@ -1,8 +1,10 @@
 {
   "dependencies": {
-    "mssql1": {
-      "type": "mssql.local",
-      "connectionId": "FastTowAssignmentContextConnection"
+    "storage1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/blobstorage053187",
+      "type": "storage.azure",
+      "connectionId": "blobstorage",
+      "secretStore": null
     }
   }
 }
