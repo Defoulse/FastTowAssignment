@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using FastTowAssignment.Areas.Identity.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FastTowAssignment.Models
 {
@@ -13,7 +14,6 @@ namespace FastTowAssignment.Models
     {
         [Key]
         public long Id { get; set; }
-        [Required]
         public string ClientId { get; set; }
         [ForeignKey("ClientId")]
         public virtual FastTowAssignmentUser Client { get; set; }

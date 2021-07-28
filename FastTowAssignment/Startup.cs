@@ -32,7 +32,7 @@ namespace FastTowAssignment
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-
+            services.AddHttpContextAccessor();
             services.AddAuthorization(options => {
                 options.AddPolicy("readpolicy",
                     builder => builder.RequireRole("Admin", "Driver", "Client"));
