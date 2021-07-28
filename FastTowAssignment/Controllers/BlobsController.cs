@@ -90,39 +90,39 @@ namespace FastTowAssignment.Controllers
         //    return uploadedFileSentence;
         //}
 
-        //public ActionResult ListItemsAsGallery(string Message = null)
-        //{
-        //    ViewBag.msg = Message;
-        //    CloudBlobContainer container = getContainerInformation();
-        //    List<string> blobs = new List<string>();
-        //    BlobResultSegment result = container.ListBlobsSegmentedAsync(null).Result;
+        public ActionResult ListItemsAsGallery(string Message = null)
+        {
+            ViewBag.msg = Message;
+            CloudBlobContainer container = getContainerInformation();
+            List<string> blobs = new List<string>();
+            BlobResultSegment result = container.ListBlobsSegmentedAsync(null).Result;
 
-        //    foreach(IListBlobItem item in result.Results)
-        //    {
-        //        if (item.GetType() == typeof(CloudBlockBlob))
-        //        {
-        //            CloudBlockBlob blob = (CloudBlockBlob)item;
+            foreach (IListBlobItem item in result.Results)
+            {
+                if (item.GetType() == typeof(CloudBlockBlob))
+                {
+                    CloudBlockBlob blob = (CloudBlockBlob)item;
 
-        //            if (Path.GetExtension(blob.Name.ToString()) == ".jpg")
-        //            {
-        //                blobs.Add(blob.Name + "#" + blob.Uri.ToString());
-        //            }
+                    if (Path.GetExtension(blob.Name.ToString()) == ".jpg")
+                    {
+                        blobs.Add(blob.Name + "#" + blob.Uri.ToString());
+                    }
 
-        //        }
-        //        else if (item.GetType() == typeof(CloudPageBlob))
-        //        {
-        //            CloudPageBlob blob = (CloudPageBlob)item;
-        //            blobs.Add(blob.Name + "#" + blob.Uri.ToString());
-        //        }
-        //        else if (item.GetType() == typeof(CloudBlobDirectory))
-        //        {
-        //            CloudBlobDirectory blob = (CloudBlobDirectory)item;
-        //            blobs.Add(blob.Uri.ToString());
-        //        }
-        //    }
+                }
+                else if (item.GetType() == typeof(CloudPageBlob))
+                {
+                    CloudPageBlob blob = (CloudPageBlob)item;
+                    blobs.Add(blob.Name + "#" + blob.Uri.ToString());
+                }
+                else if (item.GetType() == typeof(CloudBlobDirectory))
+                {
+                    CloudBlobDirectory blob = (CloudBlobDirectory)item;
+                    blobs.Add(blob.Uri.ToString());
+                }
+            }
 
-        //    return View(blobs);
-        //}
+            return View(blobs);
+        }
 
         public ActionResult DeleteBlob(string area)
         {
