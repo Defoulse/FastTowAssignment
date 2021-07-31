@@ -27,12 +27,15 @@ namespace FastTowAssignment.Controllers
             _ft = ft;
             _user = user;
         }
+
         // GET: OrderController
 
-        [Authorize(Roles = "Admin, Client")]
-        public ActionResult Index()
+        [Authorize(Roles = "Admin, Driver")]
+        public IActionResult Index()
         {
-            return View();
+            var orders = _ft.Orders.Include(a => a.DepartureCity).Include(b => b.DestinationCity).Include(a => a.CurrentStatus);
+            ViewBag.CurrentDriver = _user.GetUserId(HttpContext.User).ToString();
+            return View(orders);
         }
 
         // GET: OrderController/Details/5
@@ -43,7 +46,7 @@ namespace FastTowAssignment.Controllers
             return View();
         }
 
-        // GET: OrderController/Create
+        [Authorize(Roles = "Client")]
         public ActionResult Create()
         {
             //List<City> cities = new List<City>();
@@ -56,6 +59,7 @@ namespace FastTowAssignment.Controllers
 
         // POST: OrderController/Create
         [HttpPost]
+        [Authorize(Roles = "Client")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([FromForm] Order orderData)
         {
@@ -129,5 +133,37 @@ namespace FastTowAssignment.Controllers
                 return View();
             }
         }
+
+        // POST: OrderController/AssignToDriver/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AssignToDriver(int id)
+        {
+            // Get the model
+            Order model = _ft.Orders.Where(m => m.Id == id).FirstOrDefault();
+            // Update properties
+            model.DriverId = _user.GetUserId(HttpContext.User);
+            model.CurrentStatusId = 2;
+            // Save and redirect
+            _ft.Entry(model).State = EntityState.Modified;
+            _ft.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        // POST: OrderController/FinishOrder/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult FinishOrder(int id)
+        {
+            // Get the model
+            Order model = _ft.Orders.Where(m => m.Id == id).FirstOrDefault();
+            // Update properties
+            model.CurrentStatusId = 3;
+            // Save and redirect
+            _ft.Entry(model).State = EntityState.Modified;
+            _ft.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }

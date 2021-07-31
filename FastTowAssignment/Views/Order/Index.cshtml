@@ -1,4 +1,4 @@
-﻿@model Order
+﻿@model IEnumerable<Order>
 @{
     ViewData["Title"] = "Orders Page";
 }
@@ -6,3 +6,51 @@
 <div class="text-center">
     <h1 class="display-4">Orders</h1>
 </div>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Car</td>
+            <td>Departure City</td>
+            <td>Destination City</td>
+            <td>Price (RM)</td>
+            <td>Status</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+        <tr>
+            <td>@order.Id</td>
+            <td>@order.Car</td>
+            <td>@Html.DisplayFor(modelItem => order.DepartureCity.Name)</td>
+            <td>@Html.DisplayFor(modelItem => order.DestinationCity.Name)</td>
+            <td>@order.Price</td>
+            <td>
+                @*@if (order.CurrentStatusId.Equals(2) || order.CurrentStatusId.Equals(3))
+        {
+            @Html.DisplayFor(modelItem => order.CurrentStatus.Name);
+        }*@
+
+                @if (order.DriverId == ViewBag.CurrentDriver && order.CurrentStatusId.Equals(2))
+                {
+                    using (Html.BeginForm("FinishOrder", "Order", new { id = order.Id }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="submit" title="Finish Order" value="Finish Order" />
+                    }
+                }
+                else if (order.DriverId != ViewBag.CurrentDriver && order.CurrentStatusId.Equals(1))
+                {
+                    using (Html.BeginForm("AssignToDriver", "Order", new { id = order.Id }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="submit" title="Take the Order" value="Take Order" />
+                    }
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table> 
