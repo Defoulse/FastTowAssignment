@@ -28,11 +28,6 @@
             <td>@Html.DisplayFor(modelItem => order.DestinationCity.Name)</td>
             <td>@order.Price</td>
             <td>
-                @*@if (order.CurrentStatusId.Equals(2) || order.CurrentStatusId.Equals(3))
-        {
-            @Html.DisplayFor(modelItem => order.CurrentStatus.Name);
-        }*@
-
                 @if (order.DriverId == ViewBag.CurrentDriver && order.CurrentStatusId.Equals(2))
                 {
                     using (Html.BeginForm("FinishOrder", "Order", new { id = order.Id }))
@@ -48,6 +43,10 @@
                         @Html.AntiForgeryToken()
                         <input type="submit" title="Take the Order" value="Take Order" />
                     }
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => order.CurrentStatus.Name);
                 }
             </td>
         </tr>
