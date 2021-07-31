@@ -18,7 +18,6 @@ namespace FastTowAssignment.Controllers
         private readonly FastTowAssignmentContext _context;
         private readonly UserManager<FastTowAssignmentUser> _userManager;
         string ContainerName = "imagecontainer";
-
         public UserMediaController(UserManager<FastTowAssignmentUser> userManager, FastTowAssignmentContext context)
         {
             _userManager = userManager;
@@ -57,6 +56,7 @@ namespace FastTowAssignment.Controllers
                         userMedia.MediaUrl = result.Result.Uri.ToString();
                         userMedia.MediaFileName = result.Result.Name;
                         userMedia.MediaFileType = result.Result.Name.Split('.').Last();
+                        userMedia.DateTimeUploaded = DateTime.Now;
                     }
                     catch
                     {
