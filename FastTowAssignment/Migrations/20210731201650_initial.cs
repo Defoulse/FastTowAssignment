@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FastTowAssignment.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -181,12 +181,35 @@ namespace FastTowAssignment.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserMedia",
+                columns: table => new
+                {
+                    MediaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(nullable: true),
+                    MediaFileName = table.Column<string>(nullable: true),
+                    MediaFileType = table.Column<string>(nullable: true),
+                    MediaUrl = table.Column<string>(nullable: true),
+                    DateTimeUploaded = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserMedia", x => x.MediaId);
+                    table.ForeignKey(
+                        name: "FK_UserMedia_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientId = table.Column<string>(nullable: false),
+                    ClientId = table.Column<string>(nullable: true),
                     DriverId = table.Column<string>(nullable: true),
                     DepartureCityId = table.Column<long>(nullable: false),
                     DestinationCityId = table.Column<long>(nullable: false),
@@ -203,7 +226,7 @@ namespace FastTowAssignment.Migrations
                         column: x => x.ClientId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Orders_Statuses_CurrentStatusId",
                         column: x => x.CurrentStatusId,
@@ -293,6 +316,11 @@ namespace FastTowAssignment.Migrations
                 name: "IX_Orders_DriverId",
                 table: "Orders",
                 column: "DriverId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserMedia_UserId",
+                table: "UserMedia",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -316,16 +344,19 @@ namespace FastTowAssignment.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "UserMedia");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Statuses");
 
             migrationBuilder.DropTable(
                 name: "Cities");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }

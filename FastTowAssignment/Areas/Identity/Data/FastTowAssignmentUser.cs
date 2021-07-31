@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FastTowAssignment.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace FastTowAssignment.Areas.Identity.Data
@@ -14,5 +15,12 @@ namespace FastTowAssignment.Areas.Identity.Data
 
         [PersonalData]
         public string FamilyName { get; set; }
+
+        public virtual ICollection<UserMedia> UserMedia { get; set; }
+
+        public FastTowAssignmentUser()
+        {
+            UserMedia = new HashSet<UserMedia>();
+        }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastTowAssignment.Migrations
 {
     [DbContext(typeof(FastTowAssignmentContext))]
-    [Migration("20210727111803_Initial")]
-    partial class Initial
+    [Migration("20210731201650_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -119,7 +119,6 @@ namespace FastTowAssignment.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClientId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreationDate")
@@ -168,6 +167,35 @@ namespace FastTowAssignment.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Statuses");
+                });
+
+            modelBuilder.Entity("FastTowAssignment.Models.UserMedia", b =>
+                {
+                    b.Property<int>("MediaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateTimeUploaded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MediaFileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MediaFileType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MediaUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("MediaId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserMedia");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -305,9 +333,7 @@ namespace FastTowAssignment.Migrations
                 {
                     b.HasOne("FastTowAssignment.Areas.Identity.Data.FastTowAssignmentUser", "Client")
                         .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClientId");
 
                     b.HasOne("FastTowAssignment.Models.Status", "CurrentStatus")
                         .WithMany()
@@ -330,6 +356,13 @@ namespace FastTowAssignment.Migrations
                     b.HasOne("FastTowAssignment.Areas.Identity.Data.FastTowAssignmentUser", "Driver")
                         .WithMany()
                         .HasForeignKey("DriverId");
+                });
+
+            modelBuilder.Entity("FastTowAssignment.Models.UserMedia", b =>
+                {
+                    b.HasOne("FastTowAssignment.Areas.Identity.Data.FastTowAssignmentUser", "User")
+                        .WithMany("UserMedia")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using FastTowAssignment.Areas.Identity.Data;
+using FastTowAssignment.Data;
+using FastTowAssignment.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -12,13 +14,16 @@ namespace FastTowAssignment.Areas.Identity.Pages.Account.Manage
 {
     public partial class IndexModel : PageModel
     {
+        private readonly FastTowAssignmentContext _context;
         private readonly UserManager<FastTowAssignmentUser> _userManager;
         private readonly SignInManager<FastTowAssignmentUser> _signInManager;
 
         public IndexModel(
             UserManager<FastTowAssignmentUser> userManager,
-            SignInManager<FastTowAssignmentUser> signInManager)
+            SignInManager<FastTowAssignmentUser> signInManager,
+            FastTowAssignmentContext context)
         {
+            _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
         }
@@ -33,6 +38,10 @@ namespace FastTowAssignment.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
+            [DataType(DataType.Text)]
+            [Display(Name = "Profile Picture")]
+            public string ProfilePicture { get; set; }
+
             [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Name")]
@@ -43,7 +52,6 @@ namespace FastTowAssignment.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Family Name")]
             public string FamilyName { get; set; }
 
-
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -53,8 +61,25 @@ namespace FastTowAssignment.Areas.Identity.Pages.Account.Manage
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            string url = "";
 
             Username = userName;
+
+            string loggedInUserId = _userManager.GetUserId(User);
+            List<UserMedia> userMedia = (from a in _context.UserMedia where a.UserId == loggedInUserId select a).ToList();
+
+            url = "https://blobstorage053187.blob.core.windows.net/imagecontainer/Default_Profile_Picture.png";
+
+            if (userMedia != null)
+            {
+                for (int i = 0; i < userMedia.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        url = userMedia[i].MediaUrl;
+                    }
+                }
+            }
 
             Input = new InputModel
             {
@@ -62,6 +87,8 @@ namespace FastTowAssignment.Areas.Identity.Pages.Account.Manage
                 FamilyName = user.FamilyName,
                 PhoneNumber = phoneNumber
             };
+
+            ViewData["Picture"] = url;
         }
 
         public async Task<IActionResult> OnGetAsync()
