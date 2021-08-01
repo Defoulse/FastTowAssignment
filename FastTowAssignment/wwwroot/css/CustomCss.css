@@ -100,3 +100,14 @@
     background-size: cover;
     color: aliceblue;
 }
+
+.bus-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image3.jpg');
+    background-position: top;
+    background-size: cover;
+    color: aliceblue;
+}
+
+.order-item {
+    width: 100px;
+}

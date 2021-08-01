@@ -23,13 +23,13 @@
                     <span asp-validation-for="@Model.Price" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DepartureCityId, new { @class = "col-lg-4 control-label" })
+                    @Html.LabelFor(model => model.DepartureCityId, new { @class = "control-label" })
                     <div class="col-lg-8">
                         @Html.DropDownListFor(model => model.DepartureCityId, ViewBag.Cities as SelectList)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DestinationCityId, new { @class = "col-lg-4 control-label" })
+                    @Html.LabelFor(model => model.DestinationCityId, new { @class = "control-label" })
                     <div class="col-lg-8">
                         @Html.DropDownListFor(model => model.DestinationCityId, ViewBag.Cities as SelectList)
                     </div>
