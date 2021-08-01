@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "storage1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/fasttowassignmentstorage",
+      "type": "storage.azure",
+      "connectionId": "blobstorage",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/fasttowassignmentdbserver/databases/FastTowAssignment_db",
+      "type": "mssql.azure",
+      "connectionId": "FastTowAssignmentContextConnection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

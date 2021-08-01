@@ -68,7 +68,7 @@ namespace FastTowAssignment.Areas.Identity.Pages.Account.Manage
             string loggedInUserId = _userManager.GetUserId(User);
             List<UserMedia> userMedia = (from a in _context.UserMedia where a.UserId == loggedInUserId select a).ToList();
 
-            url = "https://blobstorage053187.blob.core.windows.net/imagecontainer/Default_Profile_Picture.png";
+            url = "https://fasttowassignmentstorage.blob.core.windows.net/imagecontainer/Default_Profile_Picture.png";
 
             if (userMedia != null)
             {
