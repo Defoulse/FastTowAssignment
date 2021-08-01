@@ -126,7 +126,9 @@ namespace FastTowAssignment.Controllers
                     PasswordHash = "AQAAAAEAACcQAAAAEJJm39YelHtQm2PcIMc4jp8U5HLqN8j9pSHNZ7givlIKF49l38dzGh6SgPZSAMC2wg==",
                     SecurityStamp = "FDSBIXZPEXL3RHECMWSHKMVRUW3JSIY2",
                     ConcurrencyStamp = "2d700b01-b756-484d-8dbb-79050894ebda",
-                    LockoutEnabled = true
+                    LockoutEnabled = true,
+                    Name = "Jo",
+                    FamilyName = "Lee"
                 }
             );
             context.SaveChanges();
