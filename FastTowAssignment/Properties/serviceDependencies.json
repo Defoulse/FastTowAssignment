@@ -1,9 +1,5 @@
 {
   "dependencies": {
-    "storage2": {
-      "type": "storage",
-      "connectionId": "BlobStorageConnection"
-    },
     "storage1": {
       "type": "storage",
       "connectionId": "blobstorage"

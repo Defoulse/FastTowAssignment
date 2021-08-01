@@ -14,7 +14,7 @@ namespace FastTowAssignment.Models
         public CloudStorageAccount storageAccount;
         public BlobUtility()
         {
-            string UserConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName=blobstorage053187;AccountKey=Sn+l3khCLrdLjUh9SBDy5rYq1j/unhQFdOJV/L1ca2L0UjKUIhHlT27GyLNooE+1F6S9gzFEKzIoUHuYbSlqCw==;EndpointSuffix=core.windows.net", "blobstorage053187", "Sn+l3khCLrdLjUh9SBDy5rYq1j/unhQFdOJV/L1ca2L0UjKUIhHlT27GyLNooE+1F6S9gzFEKzIoUHuYbSlqCw==");
+            string UserConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName=fasttowassignmentstorage;AccountKey=RUebNyt3PV32RJrLj9rQJ5OoHm55vt9V6qWFxXVk6d5ctQsacmveXawIkSBvOGSfr5kKWv6Y9fc5xnsTnLVfBQ==;EndpointSuffix=core.windows.net");
             storageAccount = CloudStorageAccount.Parse(UserConnectionString);
         }
 

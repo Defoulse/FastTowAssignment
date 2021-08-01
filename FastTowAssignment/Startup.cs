@@ -41,8 +41,8 @@ namespace FastTowAssignment
             });
             services.AddAzureClients(builder =>
             {
-                builder.AddBlobServiceClient(Configuration["ConnectionStrings:blobstorage:blob"], preferMsi: true);
-                builder.AddQueueServiceClient(Configuration["ConnectionStrings:blobstorage:queue"], preferMsi: true);
+                builder.AddBlobServiceClient(Configuration["ConnectionStrings:fasttowassignmentstorage:blob"], preferMsi: true);
+                builder.AddQueueServiceClient(Configuration["ConnectionStrings:fasttowassignmentstorage:queue"], preferMsi: true);
             });
         }
 
