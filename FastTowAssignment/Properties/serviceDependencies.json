@@ -1,12 +1,16 @@
 {
   "dependencies": {
-    "mssql1": {
-      "type": "mssql",
-      "connectionId": "FastTowAssignmentContextConnection"
+    "storage2": {
+      "type": "storage",
+      "connectionId": "BlobStorageConnection"
     },
     "storage1": {
       "type": "storage",
       "connectionId": "blobstorage"
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "FastTowAssignmentContextConnection"
     }
   }
 }
