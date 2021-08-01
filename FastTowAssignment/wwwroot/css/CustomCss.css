@@ -7,16 +7,21 @@
 }
 
 .home-background {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image1.jpg');
-    height: 500px;
+    /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image1.jpg');
     background-position: center;
     background-size: cover;
-    color: aliceblue;
+    color: aliceblue;*/
+
+    background-image: url('https://blobstorage053187.blob.core.windows.net/imagecontainer/gif1.gif');
+    background-size: 100%;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
 }
 
 .privacy-background {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image2.jpg');
-    height: 500px;
     background-position: center;
     background-size: cover;
     color: aliceblue;
@@ -32,13 +37,9 @@
 
 .register-background {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image5.jpg');
-    height: 500px;
     background-position: center;
     background-size: cover;
     color: aliceblue;
-}
-
-.register-background>div>div {
 }
 
 .article {
