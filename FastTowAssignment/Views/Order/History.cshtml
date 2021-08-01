@@ -37,14 +37,14 @@
                                 <input type="submit" title="Edit Order" value="Edit Order" />
                             }
                         }
-                        else if (order.DriverId != null && order.CurrentStatusId.Equals(3))
+                        @*else if (order.DriverId != null && order.CurrentStatusId.Equals(3))
                         {
                             using (Html.BeginForm("LeaveReview", "Order", new { id = order.Id }))
                             {
                                 @Html.AntiForgeryToken()
                                 <input type="submit" title="Leave Review" value="Leave Review" />
                             }
-                        }
+                        }*@
                         else
                         {
                             @Html.DisplayFor(modelItem => order.Driver.Name);
