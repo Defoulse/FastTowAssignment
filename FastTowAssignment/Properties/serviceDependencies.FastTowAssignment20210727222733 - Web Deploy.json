@@ -5,6 +5,12 @@
       "type": "mssql.azure",
       "connectionId": "FastTowAssignmentContextConnection",
       "secretStore": "AzureAppSettings"
+    },
+    "storage1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/blobstorage053187",
+      "type": "storage.azure",
+      "connectionId": "blobstorage",
+      "secretStore": "AzureAppSettings"
     }
   }
 }

@@ -13,6 +13,10 @@
     color: aliceblue;
 }
 
+.howitworks {
+    padding-top: 200px;
+}
+
 .privacy-background {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image2.jpg');
     background-position: center;
@@ -43,7 +47,8 @@
 }
 
 .profile-background {
-    background: linear-gradient(to left, rgba(0,0,0,0) 20%, rgba(0,0,0,1)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image8.jpg');
+    /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image8.jpg');*/
+    background: linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 70%), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image8.jpg');
     background-position: center;
     background-size: cover;
     color: aliceblue;
@@ -60,16 +65,38 @@
     color: aliceblue;
 }
 
-.howitworks {
-    padding-top: 100px;
+.adminPanel-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image6.jpg');
+    background-position: top;
+    background-size: cover;
+    color: aliceblue;
 }
 
 .article {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
+    color: black;
 }
 
 .article-card {
-    max-width: 500px;
+    min-width: 400px;
+}
+
+.table {
+    color: aliceblue;
+}
+
+.role-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image4.jpg');
+    background-position: top;
+    background-size: cover;
+    color: aliceblue;
+}
+
+.order-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image10.png');
+    background-position: top;
+    background-size: cover;
+    color: aliceblue;
 }

@@ -6,41 +6,43 @@
 
 <h1>Create Order</h1>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="@Model.Car" class="control-label"></label>
-                <input asp-for="@Model.Car" class="form-control" />
-                <span asp-validation-for="@Model.Car" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.Price" class="control-label"></label>
-                <input asp-for="@Model.Price" class="form-control" type="number" step=20 min=100 />
-                <span asp-validation-for="@Model.Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.DepartureCityId, new { @class = "col-lg-4 control-label" })
-                <div class="col-lg-8">
-                    @Html.DropDownListFor(model => model.DepartureCityId, ViewBag.Cities as SelectList)
+<body class="order-background">
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="@Model.Car" class="control-label"></label>
+                    <input asp-for="@Model.Car" class="form-control" />
+                    <span asp-validation-for="@Model.Car" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.DestinationCityId, new { @class = "col-lg-4 control-label" })
-                <div class="col-lg-8">
-                    @Html.DropDownListFor(model => model.DestinationCityId, ViewBag.Cities as SelectList)
+                <div class="form-group">
+                    <label asp-for="@Model.Price" class="control-label"></label>
+                    <input asp-for="@Model.Price" class="form-control" type="number" step=20 min=100 />
+                    <span asp-validation-for="@Model.Price" class="text-danger"></span>
                 </div>
-            </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DepartureCityId, new { @class = "col-lg-4 control-label" })
+                    <div class="col-lg-8">
+                        @Html.DropDownListFor(model => model.DepartureCityId, ViewBag.Cities as SelectList)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DestinationCityId, new { @class = "col-lg-4 control-label" })
+                    <div class="col-lg-8">
+                        @Html.DropDownListFor(model => model.DestinationCityId, ViewBag.Cities as SelectList)
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</body>
