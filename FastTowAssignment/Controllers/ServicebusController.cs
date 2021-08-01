@@ -81,6 +81,7 @@ namespace FastTowAssignment.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Call(long sequence)
         {
             var managementClient = new ManagementClient(ServiceBusConnectionString);
