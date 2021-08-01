@@ -7,17 +7,10 @@
 }
 
 .home-background {
-    /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image1.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image1.jpg');
     background-position: center;
     background-size: cover;
-    color: aliceblue;*/
-
-    background-image: url('https://blobstorage053187.blob.core.windows.net/imagecontainer/gif1.gif');
-    background-size: 100%;
-    background-repeat: repeat-y;
-    background-attachment: fixed;
-    height: 100%;
-    width: 100%;
+    color: aliceblue;
 }
 
 .privacy-background {
@@ -42,6 +35,27 @@
     color: aliceblue;
 }
 
+.login-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image7.jpg');
+    background-position: center;
+    background-size: cover;
+    color: aliceblue;
+}
+
+.profile-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image8.jpg');
+    background-position: center;
+    background-size: cover;
+    color: aliceblue;
+}
+
+.mediaFile-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blobstorage053187.blob.core.windows.net/imagecontainer/image9.jpg');
+    background-position: top;
+    background-size: cover;
+    color: aliceblue;
+}
+
 .article {
     display: flex;
     justify-content: center;
@@ -50,8 +64,4 @@
 
 .article-card {
     max-width: 500px;
-}
-
-.article-card-body {
-
 }

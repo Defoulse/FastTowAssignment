@@ -5,9 +5,10 @@
 
 <h1>Media File Upload</h1>
 
-<div class="container">
-    <div class="row">
-        @using (Html.BeginForm("UploadMediaFile", "UserMedia", FormMethod.Post, new { enctype = "multipart/form-data" }))
+<body class="mediaFile-background">
+    <div class="container">
+        <div class="row">
+            @using (Html.BeginForm("UploadMediaFile", "UserMedia", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div class="panel panel-warning">
                 <div class="panel-heading">
@@ -27,13 +28,13 @@
                 </div>
             </div>
         }
-    </div>
-    <br />
-    <div class="row">
+        </div>
         <br />
-        @foreach (var item in Model)
+        <div class="row">
+            <br />
+            @foreach (var item in Model)
         {
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb image-description" style="margin-right:100px;display:flex;flex-direction:column;" >
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb image-description" style="margin-right:100px;display:flex;flex-direction:column;">
                 <a class="thumbnail" href="@item.MediaUrl">
                     <img class="img-responsive" src="@item.MediaUrl" height="200" alt="">
                 </a>
@@ -51,5 +52,6 @@
                 </a>
             </div>
         }
+        </div>
     </div>
-</div>
+</body>
