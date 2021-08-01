@@ -15,6 +15,8 @@
             <td>Departure City</td>
             <td>Destination City</td>
             <td>Price (RM)</td>
+            <td>Client Name</td>
+            <td>Phone Number</td>
             <td>Status</td>
         </tr>
     </thead>
@@ -27,6 +29,8 @@
             <td>@Html.DisplayFor(modelItem => order.DepartureCity.Name)</td>
             <td>@Html.DisplayFor(modelItem => order.DestinationCity.Name)</td>
             <td>@order.Price</td>
+            <td>@Html.DisplayFor(modelItem => order.Client.Name)</td>
+            <td>@Html.DisplayFor(modelItem => order.Client.PhoneNumber)</td>
             <td>
                 @if (order.DriverId == ViewBag.CurrentDriver && order.CurrentStatusId.Equals(2))
                 {

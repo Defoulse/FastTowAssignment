@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using FastTowAssignment.Areas.Identity.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel;
 
 namespace FastTowAssignment.Models
 {
@@ -36,7 +37,7 @@ namespace FastTowAssignment.Models
         [Required]
         [Display(Name = "Car Model")]
         public string Car { get; set; }
-        [Required]
+        [DefaultValue(1)]
         [Display(Name = "Current Status")]
         public long CurrentStatusId { get; set; }
         [ForeignKey("CurrentStatusId")]

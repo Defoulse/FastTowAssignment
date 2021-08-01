@@ -28,18 +28,26 @@
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Role</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Create">Role</a>
                             </li>
                         }
                         else if (User.Identity.IsAuthenticated && User.IsInRole("Client"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">Order</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Create">Create Order</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="History">Orders History</a>
                             </li>
                         }
                         else if (User.Identity.IsAuthenticated && User.IsInRole("Driver"))
                         {
-                            // Pages for Driver
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">Orders</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="DriverHistory">History of Orders</a>
+                            </li>
                         }
                     </ul>
                 </div>

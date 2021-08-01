@@ -17,6 +17,8 @@ namespace FastTowAssignment.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<UserMedia> UserMedia { get; set; }
 
+        public DbSet<Article> Articles { get; set; }
+
         public FastTowAssignmentContext(DbContextOptions<FastTowAssignmentContext> options)
             : base(options)
         {

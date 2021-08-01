@@ -33,8 +33,36 @@ namespace FastTowAssignment.Controllers
         [Authorize(Roles = "Admin, Driver")]
         public IActionResult Index()
         {
-            var orders = _ft.Orders.Include(a => a.DepartureCity).Include(b => b.DestinationCity).Include(a => a.CurrentStatus);
+            var orders = _ft.Orders.Where(a => a.CurrentStatusId != 3).Include(a => a.DepartureCity).Include(b => b.DestinationCity).Include(a => a.CurrentStatus)
+                .Include(a => a.Client);
             ViewBag.CurrentDriver = _user.GetUserId(HttpContext.User).ToString();
+            return View(orders);
+        }
+
+        //public bool hasOrder(string id)
+        //{
+        //    var order = _ft.Orders.Where(a => a.DriverId == _user.GetUserId(HttpContext.User)
+                //&& a.CurrentStatusId == 2);
+        //    if (order != null)
+        //    {
+        //        return false;
+        //    }
+
+        //    return true;
+        //}
+
+        public IActionResult DriverHistory()
+        {
+            var orders = _ft.Orders.Where(m => m.DriverId == _user.GetUserId(HttpContext.User).ToString())
+                .Include(a => a.DepartureCity).Include(b => b.DestinationCity).Include(a => a.CurrentStatus);
+            return View(orders);
+        }
+
+        [Authorize(Roles = "Client")]
+        public IActionResult History()
+        {
+            var orders = _ft.Orders.Where(m => m.ClientId == _user.GetUserId(HttpContext.User).ToString())
+                .Include(a => a.DepartureCity).Include(b => b.DestinationCity).Include(a => a.CurrentStatus);   
             return View(orders);
         }
 
@@ -49,10 +77,6 @@ namespace FastTowAssignment.Controllers
         [Authorize(Roles = "Client")]
         public ActionResult Create()
         {
-            //List<City> cities = new List<City>();
-            //cities = (from c in _ft.Cities select c).ToList();
-            //cities.Insert(0, new City { Id = 0, Name = "-- Select City --" });
-            //ViewBag.message = cities;
             ViewBag.Cities = new SelectList(_ft.Cities.ToList(), "Id", "Name");
             return View();
         }
@@ -67,12 +91,10 @@ namespace FastTowAssignment.Controllers
             ViewBag.Cities = new SelectList(_ft.Cities.ToList(), "Id", "Name");
             if (ModelState.IsValid)
             {
-                    //order.ClientId = "51697ae8-0175-4657-a86f-45f96dccec4e";
                 try
                 {
                     order.ClientId = _user.GetUserId(HttpContext.User);
                     order.DepartureCityId = orderData.DepartureCityId;
-                    System.Diagnostics.Debug.WriteLine(orderData.DepartureCityId);
                     order.DestinationCityId = orderData.DestinationCityId;
                     order.Car = orderData.Car;
                     order.Price = orderData.Price;
@@ -86,31 +108,59 @@ namespace FastTowAssignment.Controllers
                 {
                     throw;
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(History));
             }
 
             return View(orderData);
         }
 
         // GET: OrderController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int? id)
         {
-            return View();
+            if (id == null) 
+            {
+                return NotFound();
+            }
+            
+            Order order = await _ft.Orders.FindAsync(id);
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            return View(order);
         }
 
         // POST: OrderController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Price, Car")] Order order)
         {
-            try
+            Order oldOrder = await _ft.Orders
+                .FirstOrDefaultAsync(m => m.Id == order.Id);
+            _ft.Entry(oldOrder).State = EntityState.Detached;
+            order.ClientId = _user.GetUserId(HttpContext.User);
+
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                //order.ClientId = "51697ae8-0175-4657-a86f-45f96dccec4e";
+                try
+                {
+                    order.CurrentStatusId = 1;
+                    order.DepartureCityId = oldOrder.DepartureCityId;
+                    order.DestinationCityId = oldOrder.DestinationCityId;
+                    _ft.Update(order);
+                    await _ft.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    return NotFound();
+                }
+                return RedirectToAction(nameof(History));
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(order);
         }
 
         // GET: OrderController/Delete/5
@@ -164,6 +214,5 @@ namespace FastTowAssignment.Controllers
             _ft.SaveChanges();
             return RedirectToAction("Index");
         }
-
     }
 }
