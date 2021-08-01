@@ -32,6 +32,10 @@
     color: aliceblue;
 }
 
+.accessDenied-background div h1, .accessDenied-background div p {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 .register-background {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://fasttowassignmentstorage.blob.core.windows.net/imagecontainer/image5.jpg');
     background-position: center;
