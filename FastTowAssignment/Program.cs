@@ -18,6 +18,7 @@ namespace FastTowAssignment
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
+            ServicebusController.Initialize();
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;

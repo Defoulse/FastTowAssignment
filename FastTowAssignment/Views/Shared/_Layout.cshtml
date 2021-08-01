@@ -34,6 +34,10 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="Panel">View Articles</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Servicebus" asp-action="ReceivedMessage">Inquiries</a>
+                            </li>
+
                         }
                         else if (User.Identity.IsAuthenticated && User.IsInRole("Client"))
                         {
@@ -46,6 +50,9 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="Index">View Articles</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Servicebus" asp-action="Index">Make an Inquiry</a>
+                            </li>
                         }
                         else if (User.Identity.IsAuthenticated && User.IsInRole("Driver"))
                         {
@@ -57,6 +64,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="Index">View Articles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Servicebus" asp-action="Index">Make an Inquiry</a>
                             </li>
                         }
                     </ul>

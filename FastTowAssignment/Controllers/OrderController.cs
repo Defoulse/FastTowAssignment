@@ -39,18 +39,6 @@ namespace FastTowAssignment.Controllers
             return View(orders);
         }
 
-        //public bool hasOrder(string id)
-        //{
-        //    var order = _ft.Orders.Where(a => a.DriverId == _user.GetUserId(HttpContext.User)
-                //&& a.CurrentStatusId == 2);
-        //    if (order != null)
-        //    {
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
-
         public IActionResult DriverHistory()
         {
             var orders = _ft.Orders.Where(m => m.DriverId == _user.GetUserId(HttpContext.User).ToString())

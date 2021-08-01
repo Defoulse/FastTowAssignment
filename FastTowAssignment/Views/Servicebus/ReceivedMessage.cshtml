@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "ReceivedMessage";
+}
+
+<h1>Inquiries</h1>
+<table border="1">
+    <tr>
+        <th>No.</th>
+        <th>Customer Name</th>
+        <th>Email</th>
+        <th>Inquiry</th>
+        <th>Call</th>
+    </tr>
+    @{int i = 0;}
+    @foreach (var client in ViewBag.messages)
+    {
+        <tr>
+            <td>@ViewBag.sequence[i]</td>
+            <td>@client.Name</td>
+            <td>@client.Email</td>
+            <td>@client.Inquiry</td>
+            <td>
+                <a asp-route-sequence="@ViewBag.sequence[i]" asp-controller="servicebus" asp-action="Call">
+                    <button>Answer is Given</button>
+                </a>
+            </td>
+        </tr>
+
+        i++;
+    }
+</table>
