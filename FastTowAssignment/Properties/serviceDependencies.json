@@ -8,5 +8,9 @@
       "type": "storage",
       "connectionId": "blobstorage"
     }
+    "appInsights1": {
+      "type": "appInsights",
+      "connectionId": "APPINSIGHTS_CONNECTIONSTRING"
+    }
   }
 }

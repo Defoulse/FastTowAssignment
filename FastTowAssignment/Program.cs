@@ -42,6 +42,7 @@ namespace FastTowAssignment
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseApplicationInsights();
                     webBuilder.UseStartup<Startup>();
                 });
     }

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>f7d6dadb-48a8-4a69-b598-dd90a817b982</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/edff1042-bf21-4339-8540-06d0b1cdd035/resourceGroups/FastTowAssignment20210802024027ResourceGroup/providers/microsoft.insights/components/FastTowAssignment</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,7 @@
     <PackageReference Include="Azure.Storage.Blobs" Version="12.3.0" />
     <PackageReference Include="Azure.Storage.Files.Shares" Version="12.1.0" />
     <PackageReference Include="Azure.Storage.Queues" Version="12.2.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
     <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.1.2" />
