@@ -12,10 +12,17 @@ namespace FastTowAssignment.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        public string Message { get; set; }
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+        }
+
+        public void OnGet()
+        {
+            Message = "Your application description page.";
+            throw new Exception("Test Exception");
         }
 
         public IActionResult Index()
